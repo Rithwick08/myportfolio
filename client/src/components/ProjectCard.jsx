@@ -1,6 +1,12 @@
-function ProjectCard({ title, description, tech }) {
-    return (
-        <div className="
+function ProjectCard({ title, description, tech, github, live }) {
+  return (<a
+    href={github}
+    target="_blank"
+    rel="noreferrer"
+    className="block group"
+  >
+    <div
+      className="
         bg-white/5 
         border border-white/10 
         rounded-xl 
@@ -11,25 +17,35 @@ function ProjectCard({ title, description, tech }) {
         hover:border-blue-400 
         hover:shadow-lg 
         hover:shadow-blue-500/10
-      ">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        cursor-pointer
+      "
+    >
   
-        <p className="text-gray-400 text-sm mb-4">
-          {description}
-        </p>
+      <h3 className="text-2xl font-semibold mb-2 group-hover:text-blue-400 transition">
+        {title}
+      </h3>
   
-        <div className="flex flex-wrap gap-2">
-          {tech.map((item, index) => (
-            <span
-              key={index}
-              className="text-xs px-3 py-1 bg-white/10 rounded-full"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+      <p className="text-gray-400 text-base mb-4 leading-relaxed">
+        {description}
+      </p>
+  
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tech.map((item, index) => (
+          <span
+            key={index}
+            className="text-xs px-3 py-1 bg-white/5 border border-white/10 rounded-full"
+          >
+            {item}
+          </span>
+        ))}
       </div>
-    )
-  }
   
-  export default ProjectCard
+      <div className="text-blue-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition">
+        View Project →
+      </div>
+  
+    </div>
+  </a>);
+}
+
+export default ProjectCard;

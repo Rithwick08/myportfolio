@@ -1,4 +1,20 @@
+import { useEffect } from "react"
+
 function Intro() {
+  useEffect(() => {
+    console.log("Intro component loaded");
+
+    fetch("http://127.0.0.1:5000/api/test")
+      .then(res => res.json())
+      .then(data => {
+        console.log("Backend response:", data);
+      })
+      .catch(err => {
+        console.error("Fetch error:", err);
+      });
+
+  }, []);
+
     return (
         <section
         id="home"
@@ -19,29 +35,19 @@ function Intro() {
           </p>
   
           <div className="mt-10 flex gap-6 justify-center">
-          <button className="
-  px-8 py-3 
-  bg-blue-500 
-  hover:bg-blue-600 
-  rounded-full 
-  font-semibold 
-  transition 
-  hover:scale-105
-">
-              View Projects
-            </button>
-  
-            <button className="
-  px-8 py-3 
-  border border-white/30 
-  hover:border-white 
-  rounded-full 
-  font-semibold 
-  transition 
-  hover:scale-105
-">
-              Contact Me
-            </button>
+          <a
+  href="#projects"
+  className="px-8 py-3 bg-blue-500 hover:bg-blue-600 rounded-full font-semibold transition hover:scale-105"
+>
+  View Projects
+</a>
+
+<a
+  href="#contact"
+  className="px-8 py-3 border border-white/30 hover:border-white rounded-full font-semibold transition hover:scale-105"
+>
+  Contact Me
+</a>
           </div>
         </div>
       </section>
